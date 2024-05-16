@@ -1,0 +1,65 @@
+---
+title: "Analysis"
+author: "Genna Campain"
+date: "2024-05-16"
+output:
+  pdf_document: default
+  html_document: default
+---
+# Load Data and Libraries
+```{r setup, message=FALSE, warning = FALSE}
+library(dplyr)
+# skewness function
+library(e1071)
+# coefficient plots
+library(coefplot)
+# set wd
+cohort <- read.csv("~/Documents/GitHub/Assignment7/raw-data/cohort.csv") %>%
+  select(smoke, female, cardiac, age, cost)
+```
+
+# Table Describing the Variables
+Include mean, sd, min/max, and skewness for each variable
+```{r}
+varnames <- as.matrix(names(cohort), nrow = 5, ncol = 1)
+meanmat <- matrix(data = 0, nrow = 5, ncol = 1)
+sdmat <- matrix(data = 0, nrow = 5, ncol = 1)
+minmaxmat <- matrix(data = NA, nrow = 5, ncol = 2)
+skewmat <- matrix(data = NA, nrow = 5)
+for(i in 1:5){
+  meanmat[i] <- round(mean(cohort[,i]), digits = 5)
+  sdmat[i] <- round(sd(cohort[,i]), digits = 5)
+  minmaxmat[i,1] <- round(min(cohort[,i]), digits = 5)
+  minmaxmat[i,2] <- round(max(cohort[,i]), digits = 5)
+  skewmat[i] <- round(skewness(cohort[,i]), digits = 5)
+}
+table <- cbind(varnames, minmaxmat, meanmat, sdmat, skewmat)
+colnames(table) <- list("Variable", "Min", "Max", "Mean", "SD", "Skewness")
+as.data.frame(table)
+```
+
+# Regression-based Approach
+Run regression
+We don't have descriptions of what exactly the variables mean, but I am going to assume the following:
+- "Cost" is the cost of a healthcare visit for the individual. This will be my dependent variable of interest.
+- "Cardiac" indicates whether the individual has previously been seen for a cardiac-related complaint.
+- "Smoke" indicates whether the person smokes regularily.
+- "Female" and "Age" are self-explanatory.
+I am interested in Cost ~ Cardiac + Smoke + Age + Female
+```{r}
+reg1 <- lm(cost ~ cardiac + smoke + age + female, data = cohort)
+summary(reg1)
+```
+
+# Figure
+```{r}
+coeffig <- coefplot(reg1, 
+                    title = "Coefficients for Linear Regression",
+                    color = "Maroon")
+coeffig
+```
+
+
+
+
+
