@@ -1,0 +1,45 @@
+---
+title: "Assignment 7"
+author: "Nova Bradford"
+date: "2024-05-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Load necessary libraries
+library(tidyverse)
+library(randomForest)
+
+# Read the data
+data <- read.csv("/Users/novabradford/Downloads/Assignment7-main/raw-data/cohort.csv")
+```
+```{r}
+# Display summary of the dataset
+summary(data)
+```
+```{r}
+# Create a table describing the variables
+variable_summary <- data.frame(
+  Variable = names(data),
+  Class = sapply(data, class),
+  MissingValues = sapply(data, function(x) sum(is.na(x))),
+  UniqueValues = sapply(data, function(x) length(unique(x)))
+)
+
+# Print variable summary table
+print(variable_summary)
+```
+```{r}
+# Perform a linear regression analysis
+model <- lm(cost ~ age, data = data) # Replace Y with the dependent variable name
+summary(model)
+
+# Plot the regression results
+plot(data$age, data$cost, main = "Scatter plot with regression line",
+     xlab = "Age", ylab = "Cost", pch = 19)
+abline(model, col = "red", lwd = 2)
+```
