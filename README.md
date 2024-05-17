@@ -10,7 +10,7 @@ In `analysis/code`, you'll find [`simulated_analysis.R`](https://github.com/Noah
 
 ### `paper_production` 
 
-To combine the two exhibits into one PDF, you must compile [`main.tex`](https://github.com/NoahB-G/Assignment7/tree/main/paper_production/main.tex) which generates `main.pdf`. Copies of `summary_stats_table.tex` and `coefficient_plot.pdf` have been placed in `paper_production/` for compilation. 
+To combine the two exhibits into one PDF, you must compile [`main.tex`](https://github.com/NoahB-G/Assignment7/tree/main/paper_production/main.tex) which generates [`main.pdf`](https://github.com/NoahB-G/Assignment7/blob/main/paper_production/main.pdf). Copies of `summary_stats_table.tex` and `coefficient_plot.pdf` have been placed in `paper_production/` for compilation. 
 
  ### Brief summary of findings
 
