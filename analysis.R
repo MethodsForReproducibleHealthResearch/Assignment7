@@ -1,4 +1,6 @@
 library(tidyverse)
+library(knitr)
+library(kableExtra)
 data <- read.csv("raw-data/cohort.csv")  
 
 data <- data %>%
@@ -24,6 +26,11 @@ library(table1)
 table <- table1(~ age + cost + gender + smoker | cardiac, data = data)
 print(table)
 
+#Save the table as an HTML file
+kable(table, format = "html", table.attr = "style='width:100%;'") %>%
+  kable_styling(full_width = F) %>%
+  save_kable("summary_table.html")
+
 #plot gender and cardiac
 library(ggplot2)
 # Plot the relationship between gender and cardiac
@@ -31,6 +38,7 @@ ggplot(data, aes(x = gender, fill = cardiac)) +
   geom_bar(position = "dodge") +
   labs(title = "Distribution of Cardiac Issues by Gender", x = "Gender", y = "Count", fill = "Cardiac Issues") +
   theme_minimal()
+ggsave("gender_cardiac_plot.png")
 
 
 #Regression analysis
@@ -61,4 +69,5 @@ ggplot(data, aes(x = predicted_prob, fill = cardiac)) +
   geom_histogram(binwidth = 0.05, position = "dodge") +
   labs(title = "Predicted Probabilities of Cardiac Issues", x = "Predicted Probability", y = "Count") +
   theme_minimal()
+ggsave("predicted_probabilities_plot.png")
 
