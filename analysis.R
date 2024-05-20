@@ -36,7 +36,6 @@ save_html <- function(x, file) {
   writeLines(as.character(x), file)
 }
 save_html(table, html_file)
-webshot(html_file, "summary_table.png")
 
 
 #plot gender and cardiac
