@@ -4,8 +4,8 @@ cohort$smoke <- factor(cohort$smoke)
 
 # generate covariate balance table
 library(tableone)
-vars = c("smoke", "age", "cardiac", "cost")
-t1 <- CreateTableOne(vars = vars, strata = "female", 
+vars = c("female", "age", "cardiac", "cost")
+t1 <- CreateTableOne(vars = vars, strata = "smoke", 
                      data = cohort, test = FALSE)
 print(t1, smd = TRUE)
 
