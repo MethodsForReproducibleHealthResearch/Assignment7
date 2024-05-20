@@ -13,7 +13,6 @@ This analysis includes:
 
 ### Descriptive Table
 The descriptive table provides labeled summaries of the variables in the dataset.  You can view the table below:
-
 ![Summary Table](summary_table.png)
 
 ### Univariate Regression Analysis

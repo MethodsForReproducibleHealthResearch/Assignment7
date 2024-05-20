@@ -1,6 +1,7 @@
 library(tidyverse)
 library(gt)
 library(webshot2)
+library(ggplot2)
 webshot::install_phantomjs()
 
 
@@ -71,7 +72,7 @@ summary(glm_smoker)
 glm_model <- glm(cardiac ~ age + cost + gender + smoker, data = data, family = binomial)
 summary(glm_model)
 
-# Plot the predicted probabilities from the logistic regression model
+#Plot the predicted probabilities from the logistic regression model
 data$predicted_prob <- predict(glm_model, type = "response")
 ggplot(data, aes(x = predicted_prob, fill = cardiac)) +
   geom_histogram(binwidth = 0.05, position = "dodge") +
