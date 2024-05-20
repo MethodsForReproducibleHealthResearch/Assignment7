@@ -12,8 +12,8 @@ This analysis includes:
 - Plots showing the distribution of cardiac issues by gender and the predicted probabilities from the logistic regression model
 
 ### Descriptive Table
-The descriptive table provides labeled summaries of the variables in the dataset.  You can view the table below:
-![Summary Table](summary_table.png)
+The descriptive table provides labeled summaries of the variables in the dataset. You can view the table [here](summary_table.html).
+
 
 ### Univariate Regression Analysis
 The univariate logistic regression models showed that all predictors were significantly associated with cardiac issues. 
