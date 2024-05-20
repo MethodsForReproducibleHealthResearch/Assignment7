@@ -30,14 +30,13 @@ library(table1)
 table <- table1(~ age + cost + gender + smoker | cardiac, data = data)
 print(table)
 
-# Convert table to data frame for use with gt
-table_df <- as.data.frame(table)
-
-# Create gt table from data frame then save as image
-gt_table <- gt(table_df)
-gtsave(gt_table, filename = "summary_table.png", path = ".")
-
-
+#save table as picture
+html_file <- "summary_table.html"
+save_html <- function(x, file) {
+  writeLines(as.character(x), file)
+}
+save_html(table, html_file)
+webshot(html_file, "summary_table.png")
 
 
 #plot gender and cardiac
