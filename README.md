@@ -26,10 +26,10 @@ The multivariate logistic regression model showed that:
 - **Smoker**: There is a significant negative association between being a smoker and the likelihood of having cardiac issues. The log odds of having cardiac issues are lower for smokers compared to non-smokers.
 
 ### Figures
-1. The plot shows the distribution of cardiac issues by gender.
-
-![Gender and Cardiac Issues Plot](gender_cardiac_plot.png)
-
-2. The plot of the predicted probabilities from the logistic regression model illustrates the distribution of predicted probabilities for cardiac issues.
+1. The plot of the predicted probabilities from the logistic regression model illustrates the distribution of predicted probabilities for cardiac issues.
 
 ![Predicted Probabilities Plot](predicted_probabilities_plot.png)
+
+2. The plot shows the distribution of cardiac issues by gender.
+
+![Gender and Cardiac Issues Plot](gender_cardiac_plot.png)
