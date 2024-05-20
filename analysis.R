@@ -1,6 +1,9 @@
 library(tidyverse)
-library(knitr)
-library(kableExtra)
+library(gt)
+library(webshot2)
+webshot::install_phantomjs()
+
+
 data <- read.csv("raw-data/cohort.csv")  
 
 data <- data %>%
@@ -26,10 +29,15 @@ library(table1)
 table <- table1(~ age + cost + gender + smoker | cardiac, data = data)
 print(table)
 
-#Save the table as an HTML file
-kable(table, format = "html", table.attr = "style='width:100%;'") %>%
-  kable_styling(full_width = F) %>%
-  save_kable("summary_table.html")
+# Convert table to data frame for use with gt
+table_df <- as.data.frame(table)
+
+# Create gt table from data frame then save as image
+gt_table <- gt(table_df)
+gtsave(gt_table, filename = "summary_table.png", path = ".")
+
+
+
 
 #plot gender and cardiac
 library(ggplot2)
