@@ -1,8 +1,20 @@
+install.packages("tidyverse")
+install.packages("gt")
+install.packages("webshot2")
+install.packages("table1")
+install.packages("here")
+
+getwd()
+help(label)
+
 library(tidyverse)
 library(gt)
 library(webshot2)
 library(ggplot2)
-webshot::install_phantomjs()
+library(table1)
+
+#added "2" to webshot
+webshot2::install_phantomjs()
 
 
 data <- read.csv("raw-data/cohort.csv")  
